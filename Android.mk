@@ -25,8 +25,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := trace-util.c trace-input.c trace-ftrace.c \
 	trace-output.c trace-recorder.c trace-restore.c trace-usage.c \
 	trace-blk-hack.c kbuffer-parse.c glob.c event-parse.c \
-	trace-seq.c parse-filter.c parse-utils.c getline.c splice.c \
-	sys_splice.S
+	trace-seq.c parse-filter.c parse-utils.c getline.c
 
 LOCAL_C_INCLUDES := $(common_target_c_includes)
 LOCAL_CFLAGS := $(COMMON_CFLAGS) $(common_target_cflags)
@@ -41,7 +40,8 @@ include $(BUILD_STATIC_LIBRARY)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES:= trace-cmd.c trace-record.c trace-read.c trace-split.c \
-   	trace-listen.c trace-stack.c trace-options.c trace-hist.c
+	trace-listen.c trace-stack.c trace-options.c trace-hist.c splice.c \
+	sys_splice.S
 LOCAL_STATIC_LIBRARIES := $(COMMON_LIBS)
 LOCAL_SHARED_LIBRARIES := libcutils libdl
 LOCAL_C_INCLUDES := $(common_target_c_includes)
