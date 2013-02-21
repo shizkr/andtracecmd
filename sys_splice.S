@@ -1,0 +1,40 @@
+#include <machine/asm.h>
+#include <sys/linux-syscalls.h>
+
+#define __NR_splice (__NR_SYSCALL_BASE + 313)
+
+    .text
+    .type sys_splice, @function
+    .globl sys_splice
+    .align 4
+
+sys_splice:
+    pushl   %ebx
+    pushl   %ecx
+    pushl   %edx
+    pushl   %esi
+    pushl   %edi
+    pushl   %ebp
+    mov     28(%esp), %ebx
+    mov     32(%esp), %ecx
+    mov     36(%esp), %edx
+    mov     40(%esp), %esi
+    mov     44(%esp), %edi
+    mov     48(%esp), %ebp
+    movl    $__NR_splice, %eax
+    int     $0x80
+    cmpl    $-129, %eax
+    jb      1f
+    negl    %eax
+    pushl   %eax
+    call    __set_errno
+    addl    $4, %esp
+    orl     $-1, %eax
+1:
+    popl    %ebp
+    popl    %edi
+    popl    %esi
+    popl    %edx
+    popl    %ecx
+    popl    %ebx
+    ret
