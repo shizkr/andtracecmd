@@ -1,5 +1,5 @@
 #include <machine/asm.h>
-#include <sys/linux-syscalls.h>
+#include <sys/glibc-syscalls.h>
 
 #define __NR_splice (__NR_SYSCALL_BASE + 313)
 
