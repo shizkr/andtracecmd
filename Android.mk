@@ -40,7 +40,7 @@ include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES:= trace-cmd.c trace-record.c trace-read.c trace-split.c \
 	trace-listen.c trace-stack.c trace-options.c trace-hist.c
-t
+
 LOCAL_STATIC_LIBRARIES := $(COMMON_LIBS)
 LOCAL_SHARED_LIBRARIES := libcutils libdl
 LOCAL_C_INCLUDES := $(common_target_c_includes)
